@@ -1,0 +1,117 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Click The Turtle</title>
+
+    <script src="jquery-2.1.1.min.js"></script>
+    <script src="jquery.velocity.min.js"></script>
+    <link rel="stylesheet" href="style.css" />
+
+    <script type="text/javascript">
+        //CLICK BUTTON
+        function freeme() {
+            $('#container').hide();
+            document.getElementById("createtortuga").innerHTML = '<img  draggable="false" id="tortuga" src="tortuga.png"  	alt="tortuga" onclick="start()" >';
+
+            //Disable right click
+            $("#createtortuga").bind("contextmenu", function (e) {
+                return false;
+            });
+        }
+
+
+        var name;
+        $(function () {
+            //Get URL QUERY STRING
+            var hashes = window.location.href.split('?');
+            if (hashes[1] != null) {
+                name = hashes[1];
+            }
+            else {
+                name = "dear visitor";
+            }
+        });
+
+
+        //Disable mouse on img
+        $("#createtortuga").mousedown(function (event) {
+            event.preventDefault();
+            $(this).unbind('click');
+        });
+
+
+        var timer = 0;
+        //CLICK TORTUGA
+        function start() {
+            //var snd = new Audio("blackcat.wav"); // FAST SOUND EFFECT!!!!!
+            //snd.volume = 0.4;
+            //snd.play();
+
+            if (timer == 0) {
+                $('body').attr('id', 'namedcolors');
+
+               // var sound = "Prelude";
+               // document.getElementById("musicPlayer").innerHTML = '<embed type="audio/mpeg" src="' + sound + '.mp3" alt="" height="25" loop="1"  width="25" border="0">';
+
+                document.getElementById("musicPlayer").innerHTML = '<audio autoplay loop> <source src="Prelude.ogg" type="audio/ogg" /></audio>';
+
+                setInterval(run, 1000);
+                fly();
+            }
+        }
+
+        //Turtle animation
+        function fly() {
+            var left = parseInt($('#createtortuga').css("left"));
+
+            $('#createtortuga').css("left", -250);
+
+            $.when(
+                    $("#createtortuga").velocity({ left: "120%" }, 14000, "linear")
+                 ).then(fly);
+        }
+
+        //Story Mode
+        function run() {
+            timer++;
+            console.log(timer);
+
+
+
+            if (timer == 5) {
+                $("#credits").fadeTo(4000, 1);
+            }
+
+
+
+        }
+
+    </script>
+
+</head>
+
+<body>
+    <div id="createtortuga"></div>
+
+    <div id="container">
+        <input type="button" value="Click" onclick="freeme()" />
+        <br />
+        <span>Click The Turtle by Thomas</span>
+    </div>
+
+    <div id="musicPlayer"></div>
+
+    <!-- Text -->
+    <span id="text1">Hey</span>
+
+    <div id="credits">
+        Click The Turtle by Thomas
+        <br/>
+        Music by: Prelude in C Major by J.S. Bach
+        <br />
+        Turtle sprite: http://kawaiicovers.com/facebook-covers/view/kawaii-turtle/2312
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,168 @@
+﻿<!DOCTYPE html>
+
+<html ng-app='myApp'>
+
+<head>
+	<title>Meow</title>
+	<meta property="og:url"           content="" />
+	<meta property="og:type"          content="website" />
+	<meta property="og:title"         content="No Turning Back Meow" />
+	<meta property="og:description"   content="The #1 source for your daily fix of cats. Unlimited cats. Updates always." />
+	<meta property="og:image"         content="http://thomasrosales.com/sites/9cat/cat4.jpg" />
+	<meta name="viewport" content="width=500">
+</head>
+
+
+
+<link rel="stylesheet" href="style.css" />
+
+<script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+
+
+<script src="files.js"></script>
+
+<script src="http://platform.twitter.com/widgets.js"></script>
+
+
+<script>
+
+
+
+//Facebook
+window.fbAsyncInit = function() {
+	FB.init({
+		appId      : '1640510479563569',
+		xfbml      : true,
+		version    : 'v2.5'
+	});
+};
+
+(function(d, s, id){
+	var js, fjs = d.getElementsByTagName(s)[0];
+	if (d.getElementById(id)) {return;}
+	js = d.createElement(s); js.id = id;
+	js.src = "http://connect.facebook.net/en_US/sdk.js";
+	fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+
+
+
+
+$(function () {
+
+	function random_imglink() {
+
+		var myimages = new Array()
+
+                //specify random images below. You can have as many as you wish
+
+                myimages[0] = "cat.jpg"
+                myimages[1] = "cat2.jpg"
+                myimages[2] = "cat3.jpg"
+                myimages[3] = "cat4.jpg"
+                myimages[4] = "cat5.jpg"
+                myimages[5] = "cat6.jpg"
+
+                var ry = Math.floor(Math.random() * myimages.length)
+
+              //  $('#aboutMePic').html('<img class="aboutPic" src="' + myimages[ry] + '" title="Thomas Rosales" />');
+
+              $("#logo").attr("src", myimages[ry])
+          }
+
+          random_imglink();
+          $('#logo').on('dragstart', function (event) { event.preventDefault(); });
+      });
+
+  </script>
+
+
+
+
+
+  <body ng-controller="mainController as main">
+
+  	<div id="container">
+
+  		<div id="header">
+
+  			<a href="/"> <img id="logo" src=""/></a>
+
+  			<h1>No Turning Back Meow</h1>
+
+  			<h5>The #1 source for your daily fix of cats. Cats. Unlimited cats. Updates daily meowalways.</h5>
+
+  		</div>
+
+  		<span style="z-index:999" ng-show="in_progress"><img id="spinner" src="spin.gif"></span>
+
+
+
+  		<div id="reddit-content">
+
+  			<div ng-repeat="image in imageData" on-finish-render="ngRepeatFinished">
+
+
+
+
+
+  				<div>
+
+  					<img class="catPic" ng-src="{{image.imageURL}}">
+
+
+
+
+  				</div>
+
+
+
+  				<a target="_blank" href="{{image.imageURL}}">Link to Pic</a> -
+
+  				<a href="" ng-click="shareOnFacebook(image.imageURL, image.imageCodeName, image.imageGifIndicator)"><img class="share-button" src="share.jpg"/></a> - 
+
+     		     <a twitter data-text="The #1 source for your daily fix of cats. Unlimited cats. Updates daily. http://noturningbackmeow.tk? {{image.imageCodeName}}" data-url="http://noturningbackmeow.tk? {{image.imageCodeName}}"></a>
+
+
+  				<br />
+  				<hr />
+				<br />
+
+
+  			</div>
+
+  			<br/><br/>
+
+  			<a  ng-show="previous_page != null" href="?{{previous_page}}&p">PREVIOUS -</a> 
+
+  			<!-- precious{{previous_page}}-->
+
+  			<a  ng-show="next_page != null" href="?{{next_page}}&a">NEXT</a>
+
+
+
+  			<!-- next {{next_page}} DEBUG-->
+
+
+
+  			<footer>
+
+  				2016 - NoTurningBackMeow.tk  <br/> www.thomasrosales.com
+
+  			</footer>
+
+
+
+
+
+  		</div>
+
+
+
+  	</div>
+
+  </body>
+
+  </html>

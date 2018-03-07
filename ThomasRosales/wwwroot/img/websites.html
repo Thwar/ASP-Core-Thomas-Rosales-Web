@@ -1,0 +1,248 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Thomas Rosales's web portal">
+    <title>Thomas Rosales's Web Portal</title>
+
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/pure-min.css">
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/grids-responsive-min.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/prettyPhoto.css">
+
+    <script src="js/jquery-2.1.1.min.js"></script>
+    <script src="js/jquery.shuffleLetters.js"></script>
+    <script src="js/jquery.prettyPhoto.js"></script>
+
+    <script>
+        $(function () {
+            $("a[rel^='prettyPhoto']").prettyPhoto();
+            $("#menuTitle").fadeTo(1000, 1);
+        });
+    </script>
+
+    <style>
+        #menuTitle {
+            opacity: 0;
+        }
+         #nav li ul {
+            display: block;
+         }
+    </style>
+    <link href="/img/favicon.ico" rel="icon" type="image/x-icon" />
+</head>
+<body>
+
+    <div id="layout">
+        <!-- Menu toggle -->
+        <a href="#menu" id="menuLink" class="menu-link">
+            <!-- Hamburger icon -->
+            <span></span>
+        </a>
+        <div id="menu">
+            <div class="pure-menu pure-menu-open">
+                <a id="menuTitle" class="pure-menu-heading" href="#">HOME</a>
+                <ul id="nav">
+                    <li class="menu-item">
+                        <a href="index">Home</a>
+                    </li>
+                    <li class="menu-item">
+                       <a href="blog">Blog</a>
+                   </li>
+                   <li class="menu-item">
+                    <a class="selected active"  href="#">Portfolio</a>
+                    <ul>
+
+                       <li><a class="selected"  href="websites">Websites</a></li>
+                       <li><a href="applications">Applications</a></li>    
+                       <li><a href="music">Music</a></li>
+                   </ul>
+               </li>
+               <li class="menu-item">
+                <a href="about">About</a>
+            </li>
+        </ul>
+    </div>
+</div>
+        <div id="main">
+            <!-- HEADER -->
+            <div class="header">
+                <h2 style="text-align :left;">Thomas Rosales - Websites</h2>
+            </div>
+            <div class="content leftContent">
+
+                <!-- WEBSITES -->
+				<!-- 
+				<h3 class="projectHeader">***PROJECT NAME***</h3>
+                <p class="projectLinks"><a target="_blank" href="**PROJECT LINK**" >(http://thwar.comeze.com/JMI/ )</a></p>
+                <div class="pure-g" style="clear: both;">
+                    <div class="pure-u-1 pure-u-md-1-4">
+                           <a href="img/JMIMUSIK.JPG" rel="prettyPhoto"> <img class="pure-img-responsive" src="img/JMIMUSIK.JPG" alt="JMI MUSIK"></a>               
+                    </div>
+                    <div class=" pure-u-1 pure-u-md-3-4">
+                        <div class="description">
+                            Website for a music producer friend. 100% Fully responsive.
+                            <br /><br />Status: Demo Completed
+                        </div>
+                    </div>
+                </div>
+                <br /><hr />
+				-->
+              <h3 class="projectHeader">THOMASROSALES.COM</h3>
+                <div class="pure-g" style="clear: both;">
+                    <div class="pure-u-1 pure-u-md-1-4">
+                           <a href="img/thom.JPG" rel="prettyPhoto"> <img class="pure-img-responsive" src="img/thom.JPG" alt="thomasrosales.com"></a>               
+                    </div>
+                    <div class=" pure-u-1 pure-u-md-3-4">
+                        <div class="description">
+                            Of course I put extra effort for my personal site. I always wanted a minimalistic look. I decided to choose the safer route and use the Pure CSS Responsive Side Menu layout and customize it to my needs. I did pretty heavy changes to the CSS and added some scripts to better handle the side bar menu. 
+
+                        </div>
+                    </div>
+                </div>
+                <br /><hr />
+
+                <h3 class="projectHeader">RADICAL MOVERS</h3>
+                <div class="pure-g" style="clear: both;">
+                    <div class="pure-u-1 pure-u-md-1-4">
+                           <a href="img/radical.PNG" rel="prettyPhoto"> <img class="pure-img-responsive" src="img/radical.PNG" alt="RADICAL MOVERS"></a>               
+                    </div>
+                    <div class=" pure-u-1 pure-u-md-3-4">
+                        <div class="description">
+                            A site for a moving company in Northern Virginia. Design help by Monserrat Contreras. Features minimalistic look, smooth scrolling, top button scroll, responsive fluid page, sidebar menu, heavy css styling, bootstrap framework.
+                            <br /><br /><a target=_blank  href='http://radicalmovers1.com/'>Visit website</a>
+                        </div>
+                    </div>
+                </div>
+                <br /><hr />
+
+			    <h3 class="projectHeader">GIF SCREAMER CREATOR</h3>
+                <div class="pure-g" style="clear: both;">
+                    <div class="pure-u-1 pure-u-md-1-4">
+                           <a href="http://gifscreamer.com/gifs/dandark.jpg" rel="prettyPhoto"> <img class="pure-img-responsive" src="http://gifscreamer.com/gifs/dandark.jpg" alt="GIF SCREAMER CREATOR"></a>               
+                    </div>
+                    <div class=" pure-u-1 pure-u-md-3-4">
+                        <div class="description">
+                            Built with Jquery and AngularJS. Designed for fun and evil. Generate links to GIFs that are really booby traps enclosed with a popup screamer. Send to friends and family to be hated by everyone you love. 
+                            <br /><br /><a target=_blank  href='http://gifscreamer.com/'>Visit site at your own risk</a>
+                        </div>
+                    </div>
+                </div>
+                <br /><hr />
+				
+		
+			    <h3 class="projectHeader">JMI MUSIK</h3>
+                <div class="pure-g" style="clear: both;">
+                    <div class="pure-u-1 pure-u-md-1-4">
+                           <a href="img/JMIMUSIK.JPG" rel="prettyPhoto"> <img class="pure-img-responsive" src="img/JMIMUSIK.JPG" alt="JMI MUSIK"></a>               
+                    </div>
+                    <div class=" pure-u-1 pure-u-md-3-4">
+                        <div class="description">
+                            Website template built from scratch for a music producer. 100% Fully responsive. Features a custom slide menu, youtube video, soundcloud, album slideshow, twitter feed, social medio links and support up to 6 pages. Built using pure v0.6.0 framework.  
+                            <br /><br /><a target=_blank  href='http://thwar.comeze.com/JMI/'>Visit Regular HTML Demo site</a>
+							 <br /><a target=_blank href='http://thwar.comeze.com/AngularJMI/'>Visit AngularJS version Demo site</a>
+                        </div>
+                    </div>
+                </div>
+                <br /><hr />
+				
+
+                <h3 class="projectHeader">Angelita Express</h3>
+                <div class="pure-g" style="clear: both;">
+                    <div class="pure-u-1 pure-u-md-1-4">
+                           <a href="img/angelita.jpg" rel="prettyPhoto"> <img class="pure-img-responsive" src="img/angelita.jpg" alt="Angelita Express"></a>              
+                    </div>
+                    <div class=" pure-u-1 pure-u-md-3-4">
+                        <div class="description">
+                            Website built from scratch for Latino Mini market located in Woodbridge, VA. with Facebook API integration.
+                            <br /><br />Status: Completed
+							<br /><a target=_blank  href='http://www.angelitaexpress.com'>Visit the site</a>
+                        </div>
+                    </div>
+                </div>
+                <br /><hr />
+
+
+                <h3 class="projectHeader">Meow Links</h3>
+                <div class="pure-g" style="clear: both;">
+                    <div class="pure-u-1 pure-u-md-1-4">
+                        <a href="img/meow.jpg" rel="prettyPhoto"> <img class="pure-img-responsive" src="img/meow.jpg" alt="MeowLinks"></a>
+                    </div>
+                    <div class="pure-u-1 pure-u-md-3-4">
+                        <div class="description">
+                            MeowLinks is the largest collection of the funnest cat websites found on the internet.
+                            Built using ASP.NET MVC 5, Entity Framework 6 and Twitter bootstrap as frontend framework.
+                            <br /><br />Status: Discontinued
+							<br /><a target=_blank  href='http://meowlinks.azurewebsites.net/'>Visit the site</a>
+                        </div>
+                    </div>
+                </div>
+                <br /><hr />
+
+
+                <h3 class="projectHeader">Wedding Template Site</h3>
+                <div class="pure-g" style="clear: both;">
+                    <div class="pure-u-1 pure-u-md-1-4">
+                        <a href="img/wedd.jpg" rel="prettyPhoto"><img class="pure-img-responsive" src="img/wedd.jpg" alt="Wedding Template Site"></a>
+                    </div>
+                    <div class="pure-u-1 pure-u-md-3-4">
+                        <div class="description">
+                            Wedding Template website built on MVC 5.
+                            <br />Features jquery gallery and picture uploads.
+                            <br /><br />  Status: Discontinued/Canceled
+							<br /><a target=_blank  href='http://weddingmuriel.azurewebsites.net/'>Visit the site</a>						
+                        </div>
+                    </div>
+                </div>
+                <br /><hr />
+
+
+                <h3 class="projectHeader">PhoSapa</h3>
+                <div class="pure-g" style="clear: both;">
+                    <div class=" pure-u-1 pure-u-md-1-4">
+                        <a href="img/xino.jpg" rel="prettyPhoto"><img class="pure-img-responsive" src="img/xino.jpg" alt="PhoSapa Vietname Restaurant"></a>
+                    </div>
+                    <div class="pure-u-1 pure-u-md-3-4">
+                        <div class="description">Main web developer for Vietnamese Restaurant in Manassas, Virginia. <br />Status: Completed -  December 2013.
+						<br /><a target=_blank  href='http://www.phosapa.com'>Visit the site</a>
+						</div>					
+                    </div>
+                </div>
+                <br /><hr />
+
+                <h3 class="projectHeader">Other Websites</h3>
+                <p class="projectLinks">(Demo, concept and playground sites.) </p>
+                <div style="clear: both;"></div>
+           
+                <strong><a target="_blank" href="http://thomasrosales.net/sites/Countdown/countdown.html">Arab Countdown Prank:</a></strong>
+                   This is a remake from a popular viral flash animation prank from http://www.thecleverest.com/countdown.swf
+                <br />
+
+                <strong><a target="_blank" href="http://thomasrosales.net/sites/wtfcat/index.html">TerroCat:</a></strong>   
+                 Let the cat do the job!
+                <br />
+
+                <strong><a target="_blank" href="http://thomasrosales.net/sites/MagicDonut/donut.html">Magic Donut:</a></strong> 
+                   Sitdown relax enjoy the music and mesmerize yourself at the donut of magicness. 
+                <br />
+
+                <strong><a target="_blank" href="http://thomasrosales.net/sites/TORTU/tortuga.html">Click The Turtle:</a></strong>
+                   Just do what the title says and you will be fine I promise.
+                <br />  
+
+                <strong><a target="_blank" href="http://thomasrosales.net/sites/Apple/apple.html">Fake Apple site:</a></strong>
+                  A lazy attempt to copy the home layout of the Apple website.
+                <br />  
+                 <hr />
+
+
+            </div>
+        </div>
+        <div class="push"></div>
+    </div>
+    <div class="footer">© 2015 Thomas Rosales. All Rights Reserved.</div>
+    <!-- Script must be here to load DOM properly -->
+    <script src="js/ui.js"></script>
+</body>
+</html>

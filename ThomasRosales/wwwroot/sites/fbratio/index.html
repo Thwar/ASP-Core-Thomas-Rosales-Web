@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Sausagefest</title>
+
+    <!-- Scripts-->
+    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js"></script>
+    <script src="scripts/angular-chart.js"></script>
+    <script src="scripts/script.js"></script>
+
+
+    <!-- stylesheet-->
+    <link rel="stylesheet" href="css/angular-chart.css">
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
+    <link rel="stylesheet" href="http://yui.yahooapis.com/combo?pure/0.6.0/base-min.css&pure/0.6.0/grids-min.css&pure/0.6.0/grids-responsive-min.css">
+    <link rel="stylesheet" href="css/style.css">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+</head>
+
+<body ng-app="myApp">
+
+    <script>
+        window.fbAsyncInit = function () {
+            FB.init({
+                appId: '660773980731130',
+                xfbml: true,
+                version: 'v2.5'
+            });
+        };
+
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) { return; }
+            js = d.createElement(s); js.id = id;
+            js.src = "http://connect.facebook.net/en_US/sdk.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
+
+
+
+
+    <div ng-init="eventId='976916052350399' " ng-controller="MainCtrl">
+        <div class="pure-g">
+
+            <div class="pure-u-1 centerContent">
+
+                <img src="logotransparent.png" />
+                <p class="redText">
+                   Important: This tool only works in Google Chrome and CORS must be enabled. This extension must be installed: <a href="https://chrome.google.com/webstore/detail/allow-control-allow-origi/nlfbmbojpeacfghkpbjhddihlkkiljbi/reviews?hl=en">Install this</a>
+                </p>
+            </div>
+
+
+        </div>
+
+        <!-- Input form here-->
+        <div class="pure-g">
+
+            <div class="pure-u-1">
+                <form class="pure-form centerContent">
+                    <fieldset>
+                        <legend>Enter facebook event ID:</legend>
+                        <input class="pure-input-1-2 centerContent" type="text" name="eventId" ng-model="eventId" />
+                        <button class="pure-button" ng-click="submit()">submit</button>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+        <br/><br /><br />
+
+        <!-- Data Analysis here-->
+        <div class="pure-g">
+
+            <div class="pure-u-1 pure-u-md-1-3 centerContent">
+                <!-- PIE CHART -->
+                <div class="textAppear" ng-show="analysisComplete">
+                    <h3>Gender Pie Chart</h3>
+                    <canvas chart-colours="colours" chart-legend=true id="pie" class="chart chart-pie" chart-data="data" chart-labels="labels"></canvas>
+                   
+                </div>
+
+            </div>
+
+            <!-- Center Info Data Main -->
+            <div class="pure-u-1 pure-u-md-1-3 centerContent">
+                <div class="textAppear" ng-show="dataStatisticsShow" >
+                    <strong>Event Name:</strong> {{eventName}}<br />
+
+                </div>
+                <div ng-show="dataStatisticsShow"  class="centerImage">
+                    <br/><br />
+                    Looks like it might be a...
+                    <img class="analysisImage" ng-show="sausageFestPositive" ng-src="sausage.png" />
+                    <img class="analysisImage" ng-show="fishMarketPositive" src="fish.png" />
+                   
+                </div>
+                <div ng-show="loading"> <img  src="hourglass.gif" /></div>
+              
+                {{statusText}}
+                <br /><br />
+                <div  class="textAppear" ng-show="analysisComplete" id="dataStatistics">
+                    <div class="pure-g">
+                        <div class=" pure-u-1-2 ">
+                            <div class="dataInfoText"> <strong>Female: </strong> {{female}} ({{(100*female/attending.length)| number:0}}%) </div>
+                        </div>
+                        <div class="pure-u-1-2 ">
+                            <div class="dataInfoText"> <strong>Male:</strong> {{male}}  ({{(100*male/attending.length)| number:0}}%)<br /></div>
+                        </div>
+                    </div>
+                    <br />
+                    <strong>Unknown:</strong> {{unknown}}  ({{(100*unknown/attending.length)| number:0}}%)<br />
+                    <strong>Ratio:</strong> {{ratio}}<br />
+                    <strong>Total:</strong> {{attending.length}} out of {{totalAttendees}}
+                    <br /><br />
+                    <strong>Event Details</strong> <br /><br />
+                    <strong>Event Place:</strong> {{eventPlaceName}}<br />
+                    <strong>Event Location:</strong> {{eventStreet}} {{eventCity}} {{eventState}} {{eventZip}} {{eventCountry}}<br /><br />
+                    <br />
+                </div>
+    
+            </div>
+
+            <!-- Gender Data Accuracy  -->
+            <div ng-show="analysisComplete"  class="pure-u-1 pure-u-md-1-3 centerContent textAppear ">
+                <h3>Gender Data Accuracy</h3>
+                <div >
+
+                    Total Accuracy  {{nameGuessAccuracy/totalAttendees}}%<br />
+                    Female Name Accuracy  {{femaleNameAccuracy/female}}%<br />
+                    Male Name Accuracy  {{maleNameAccuracy/male}}%
+                </div>
+
+
+                <canvas  ng-show="analysisComplete" id="bar" class="chart chart-bar"  
+                        chart-data="barData" chart-labels="barLabels"  chart-series="barSeries">
+                </canvas>
+            </div>
+        </div>
+
+
+        <!-- Attendees pictures below here -->
+        <div ng-show="analysisComplete"  class="pure-g">
+
+            <div class="pure-u-4-5 centerContent">
+                <h3>Attendees </h3>
+                <div class="attendee centerContent" ng-repeat="x in attending" ng-class="(x.gender=='male') ? 'maleBox' : 'femaleBox'">
+
+                    <img ng-src="{{x.picture}}" />
+                    {{x.name}} <br />{{x.gender}} {{x.scale}}
+
+                </div>
+            </div>
+
+            <div class="pure-u-1-5">
+                <h3>Unknown gender</h3>
+                <div class="attendee centerContent" ng-repeat="x in attending" ng-if="x.gender=='unknown'">
+
+                    <img ng-src="{{x.picture}}" />
+                    {{x.name}} {{x.gender}} {{x.scale}}
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

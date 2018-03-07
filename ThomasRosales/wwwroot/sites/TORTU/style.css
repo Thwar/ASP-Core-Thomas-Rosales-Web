@@ -1,0 +1,107 @@
+
+#createtortuga {
+    height: 250px;
+    left: 50%;
+    margin-top: -125px;
+    margin-left: -125px;
+    position: absolute;
+    top: 50%;
+    width: 250px;
+}
+
+body {
+    overflow: hidden;
+    background-image: linear-gradient( rgba(255,255,255,0.1), rgb(255, 255, 255) );
+    width: 100%;
+    height: 100%;
+    margin: 0;
+}
+
+html {
+    width: 100%;
+    height: 100%;
+}
+
+#text1 {
+    font-family: Monserrat;
+    opacity: 0;
+    position: absolute;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    top: 15%;
+    font-size: 350%;
+}
+
+#container {
+    padding: 8px;
+}
+
+#namedcolors {
+    background-color: yellow;
+    -moz-animation: namedcolors 30s infinite alternate;
+    -o-animation: namedcolors 30s infinite alternate;
+    -webkit-animation: namedcolors 30s infinite alternate;
+    animation: namedcolors 30s infinite alternate;
+}
+
+#credits {
+     opacity: 0;
+    position: absolute;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    bottom:30px;
+}
+
+/*MY CUSTOM CSS*/
+@font-face {
+    font-family: Monserrat;
+    src: url(Montserrat-Regular.ttf);
+}
+
+@-moz-keyframes namedcolors {
+    100% {
+        background-color: aqua;
+    }
+
+    75% {
+        background-color: yellow;
+    }
+
+    50% {
+        background-color: orange;
+    }
+}
+
+@-webkit-keyframes namedcolors {
+    100% {
+        background-color: aqua;
+    }
+
+    75% {
+        background-color: yellow;
+    }
+
+    50% {
+        background-color: orange;
+    }
+}
+
+@keyframes namedcolors {
+    100% {
+        background-color: aqua;
+    }
+
+    75% {
+        background-color: yellow;
+    }
+
+    50% {
+        background-color: orange;
+    }
+}

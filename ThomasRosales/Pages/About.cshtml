@@ -3,7 +3,187 @@
 @{
     ViewData["Title"] = "About";
 }
-<h2>@ViewData["Title"]</h2>
-<h3>@Model.Message</h3>
 
-<p>Use this area to provide additional information.</p>
+
+
+<!-- HEADER -->
+<!--<div class="header">
+
+
+
+    <h2 style="text-align :left;">About</h2>
+
+</div>-->
+
+<div class="content ">
+
+    <div class="header">
+        <h2 style="text-align :left;">Thomas Rosales - About Me</h2>
+    </div>
+
+    <br />
+
+
+
+    <div id="aboutMePic"></div>
+
+
+
+    <p style="text-align:center">
+
+        Born in Fairfax, Virginia. Bolivian roots. I work mainly in C#, but I do enjoy the art of coding in general. I've worked with several clients over the past 4 years developing differents websites and applications.
+
+        I graduated from George Mason University with BS in Applied Information Technology and Web Development.
+
+        Became passionate with technology from an early age.
+
+        Eventually grew strong interest in Web Development.
+
+        Always open to new opportunities, play, test and discover fun and interesting new technologies.
+
+        Crazy ideas are also welcome.
+
+        Also, I love cats.
+
+        <br /><br />
+
+        One of my goals is to create products that people will enjoy or make use of.
+
+        <br />
+
+
+
+    </p>
+
+
+
+
+
+    <ul class="social-buttons">
+
+
+
+        <li>
+
+            <a title="Email" href="mailto:thomaswar3@gmail.com">
+
+                <i class="fa fa-at"></i>
+
+            </a>
+
+        </li>
+
+
+
+        <li>
+
+            <a title="Twitter" href="https://twitter.com/thomasrosalesz" target="_blank">
+
+                <i class="fa fa-twitter"></i>
+
+            </a>
+
+        </li>
+
+
+
+        <li>
+
+            <a title="GitHub" href="https://github.com/thwar" target="_blank">
+
+                <i class="fa fa-github"></i>
+
+            </a>
+
+        </li>
+
+        <li>
+
+            <a title="Instagram" href="https://www.instagram.com/trosalz/" target="_blank">
+
+                <i class="fa fa-instagram"></i>
+
+            </a>
+
+        </li>
+
+
+
+    </ul>
+
+
+
+    <br />  <br />
+
+
+
+    <hr />
+
+    <p>
+
+        List of technologies I mainly work with: HTML, JQuery, Javascript, AngularJS, PHP, SQL, C#, Web API, CSS, etc.
+
+        <br />
+
+        This site is built with &lt;3 using <a target="_blank" href="http://purecss.io/">pure v0.5.0</a> based on the Responsive Side Menu layout.
+
+        <br />
+
+        JQuery Plugins used on this site:
+
+        <a target="_blank" href="http://www.no-margin-for-errors.com/projects/prettyphoto-jquery-lightbox-clone/">prettyPhoto</a>
+
+        ,
+
+        <a target="_blank" href="http://tutorialzine.com/2011/09/shuffle-letters-effect-jquery/">shuffleLetters</a>
+
+
+
+
+
+    </p>
+
+    <hr />
+
+<script>
+
+    $(function () {
+
+
+
+        function random_imglink() {
+
+            var myimages = new Array()
+
+            //specify random images below. You can have as many as you wish
+
+            myimages[0] = "img/about/tho.jpg"
+
+            myimages[1] = "img/about/tho2.jpg"
+
+            myimages[2] = "img/about/tho3.jpg"
+
+            myimages[3] = "img/about/tho4.jpg"
+            myimages[4] = "img/about/tho5.jpg"
+            myimages[5] = "img/about/tho6.jpg"
+            myimages[6] = "img/about/tho7.jpg"
+
+
+
+            var ry = Math.floor(Math.random() * myimages.length)
+
+            $('#aboutMePic').html('<img class="aboutPic" src="' + myimages[ry] + '" title="Thomas Rosales" />');
+
+
+
+        }
+
+        random_imglink();
+
+        $('img').on('dragstart', function (event) { event.preventDefault(); });
+
+    });
+
+
+
+</script>

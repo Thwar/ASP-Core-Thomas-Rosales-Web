@@ -9,9 +9,11 @@ namespace ThomasRosales.Pages
 {
     public class IndexModel : PageModel
     {
+        public string CurrentPage { get; set; }
+
         public void OnGet()
         {
-
+            CurrentPage = "Home";
         }
     }
 }

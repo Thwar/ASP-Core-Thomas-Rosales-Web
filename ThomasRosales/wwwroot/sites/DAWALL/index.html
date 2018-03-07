@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>DA WALL by Thomas Rosales</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
+    <script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js"></script>
+
+    <!--  Youtube API -->
+    <script src="YTPlayer.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="sidebar.css">
+    <link rel="stylesheet" type="text/css" href="font-awesome-4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <!-- 1. The <iframe> (and video player) will replace this <div> tag. -->
+    <div id="player"></div>
+
+
+    <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a href="#!" onclick="toggleDialog()">About</a>
+
+        <i id="plusBtn" class="fa fa-plus-circle" aria-hidden="true" onclick="IncreaseSpeed()"><span >Increase Scroll Speed</span></i>
+        <i id="minusBtn" class="fa fa-minus-circle" aria-hidden="true" onclick="DecreaseSpeed()"><span >Decrease Scroll Speed</span></i>
+        <i id="changeBtn" class="fa fa-chevron-circle-right" aria-hidden="true" onclick="ChangeSong()"><span >Change Song</span></i>
+
+    </div>
+
+    <div id="inner" class="grid">
+        <div class="grid-sizer"></div>
+    </div>
+
+    <div id="authorPopup">
+        <a href="javascript:void(0)" class="closebtn" onclick="toggleDialog()">&times;</a>
+        <p>DA WALL v1.0</p>
+        <p>Author: Thomas Rosales</p>
+        <p>Website: <a target="blank" href="http://www.thomasrosales.com">www.thomasrosales.com</a></p>
+    </div>
+
+    <div id="intro">
+        <p id="text1">For the best Experience open in browser. Tested with Google Chrome.</p>
+        <p id="text2">Make sure sound is on.</p>
+        <p id="text3">Also press F11</p>
+        <a id="readyTxt" onclick="StartDaWall()" href="#">Ready?</a>
+    </div>
+
+
+</body>
+
+<script>
+    var offset = 20;
+    var scrollSpeed = 2;
+
+    function IncreaseSpeed() {
+        scrollSpeed += 1;
+        console.log(scrollSpeed);
+    }
+
+    function DecreaseSpeed() {
+        scrollSpeed -= 1;
+        console.log(scrollSpeed);
+    }
+
+
+    function StartDaWall() {
+
+        $('#inner').stop().animate({
+            "opacity": 1
+        }, 4000);
+
+        $('#player').stop().animate({
+            "opacity": 1
+        }, 4000);
+
+        $('#intro').fadeOut();
+
+        player.playVideo();
+
+        setInterval(function () {
+            var pos = $(window).scrollTop();
+            $(window).scrollTop(pos + scrollSpeed);
+        }, 50)
+
+        //Detect mouse cursor
+        $(window).mousemove(function (event) {
+
+            if (event.pageX < 100)
+                openNav();
+            else if (event.pageX >= 200)
+                closeNav()
+
+        });
+    }
+
+
+    $(function () {
+        var win = $(window);
+        // Each time the user scrolls
+        win.scroll(function () {
+            // End of the document reached?
+            var page = $(document).height() - win.height() - win.scrollTop();
+            if (page <= 300) {
+                // alert("test");
+                page = 666;
+                LoadImages();
+            }
+        });
+
+
+
+        //Intro Text      
+        $("#text1").slideUp(0).delay(500).fadeIn(1000);
+        $("#text2").slideUp(0).delay(2000).fadeIn(1000);
+        $("#text3").slideUp(0).delay(3500).fadeIn(1000);
+        $("#readyTxt").slideUp(0).delay(5000).fadeIn(5000);
+
+    })
+
+    function LoadImages() {
+
+        var $grid = $('.grid').masonry({
+            itemSelector: '.grid-item',
+            percentPosition: true,
+            columnWidth: '.grid-sizer'
+        });
+
+        var apiKey = "f46942962b644021951733935b60adf5";
+        var xhr = $.get("http://api.giphy.com/v1/gifs/trending?api_key=" + apiKey + "&limit=20&offset=" + offset);
+
+        offset += 20;
+
+        xhr.done(function (data) {
+            //  console.log("Load new data", data);
+
+            for (i = 0; i < data.data.length; i++) {
+
+                var $items = $('<div class="grid-item"><img  src="' + data.data[i].images.downsized.url +
+                    '"></img></div>');
+                // append items to grid
+                $grid.append($items).masonry('appended', $items);
+                //    $('.grid').masonry("layout");
+            }
+            //    $('.grid').masonry("layout");
+
+        });
+    }
+
+
+
+    //javascript, jQuery
+    var apiKey = "f46942962b644021951733935b60adf5";
+    var xhr = $.get("http://api.giphy.com/v1/gifs/trending?api_key=" + apiKey + "&limit=20");
+    xhr.done(function (data) {
+        //  console.log("success got data", data);
+
+        for (i = 0; i < data.data.length; i++) {
+            $("#inner").append('<div class="grid-item"><img  src="' + data.data[i].images
+                .downsized.url +
+                '"></img></div>');
+        }
+
+        console.log("ready!");
+        // init Masonry
+        var $grid = $('.grid').masonry({
+            itemSelector: '.grid-item',
+            percentPosition: true,
+            columnWidth: '.grid-sizer'
+        });
+
+
+        setInterval(function () {
+            // console.log(' interval');
+            $('.grid').masonry("layout");
+        }, 1000);
+
+        // layout Masonry after each image loads
+        $grid.imagesLoaded().progress(function () {
+            $grid.masonry('layout');
+        });
+    });
+
+
+    /* Set the width of the side navigation to 250px and the left margin of the page content to 250px */
+    function openNav() {
+        document.getElementById("mySidenav").style.width = "200px";
+        document.getElementById("inner").style.marginLeft = "200px";
+        $(".sidenav i").css('transform', 'scale(1,1)')
+    }
+
+    /* Set the width of the side navigation to 0 and the left margin of the page content to 0 */
+    function closeNav() {
+        document.getElementById("mySidenav").style.width = "0";
+        document.getElementById("inner").style.marginLeft = "0";
+        $(".sidenav i").css('transform', 'scale(0,0)')
+    }
+
+    function toggleDialog() {
+
+        $('#authorPopup').fadeToggle(750);
+    }
+
+
+    //Hover Effects
+    $('#minusBtn').hover(function () {
+        // Mouse Over Callback
+        $('#' + $(this).attr('id') + ' span').stop().animate({
+            "opacity": 1
+        });
+    }, function () {
+        // Mouse Leave callback
+        $('#' + $(this).attr('id') + ' span').stop().animate({
+            "opacity": 0
+        });
+    });
+
+    $('#plusBtn').hover(function () {
+        // Mouse Over Callback
+        $('#' + $(this).attr('id') + ' span').stop().animate({
+            "opacity": 1
+        });
+    }, function () {
+        // Mouse Leave callback
+        $('#' + $(this).attr('id') + ' span').stop().animate({
+            "opacity": 0
+        });
+    });
+
+    $('#changeBtn').hover(function () {
+        // Mouse Over Callback
+        $('#' + $(this).attr('id') + ' span').stop().animate({
+            "opacity": 1
+        });
+    }, function () {
+        // Mouse Leave callback
+        $('#' + $(this).attr('id') + ' span').stop().animate({
+            "opacity": 0
+        });
+    });
+</script>
+<style>
+    * {
+        box-sizing: border-box;
+    }
+    /* force scrollbar */
+
+    html {
+        overflow-y: scroll;
+    }
+
+    body {
+        font-family: sans-serif;
+        background-color: #121212;
+    }
+    /* clear fix */
+
+    .grid:after {
+        content: '';
+        display: block;
+        clear: both;
+    }
+    /* ---- .grid-item ---- */
+
+    .grid-sizer,
+    .grid-item {
+        width: 33.333%;
+    }
+
+    .grid-item {
+        float: left;
+        padding: 15px;
+    }
+
+    .grid-item img {
+        display: block;
+        max-width: 100%;
+        margin: 0 auto;
+    }
+
+    #authorPopup {
+        display: none;
+        position: fixed;
+        left: 0px;
+        top: 300px;
+        width: 300px;
+        text-align: center;
+        z-index: 1000;
+        background-color: black;
+        left: 50%;
+        margin-left: -150px;
+        text-decoration: none;
+        /* Half of the width */
+    }
+
+    #authorPopup p {
+        color: #818181;
+    }
+
+    #authorPopup a {
+        color: white;
+        text-decoration: none;
+    }
+
+    #authorPopup .closebtn {
+        text-decoration: none;
+        color: grey;
+        display: block;
+        position: absolute;
+        top: 0;
+        right: 5px;
+        font-weight: bold;
+        font-size: 20px;
+    }
+
+    #intro {
+        color: grey;
+        position: fixed;
+        position: fixed;
+        left: 0px;
+        top: 300px;
+        width: 300px;
+        text-align: center;
+        z-index: 1000;
+        left: 50%;
+        margin-left: -150px;
+        text-decoration: none;
+    }
+
+    #intro a {
+        color: white;
+        text-decoration: none;
+        font-size: 150%;
+    }
+</style>
+
+</html>

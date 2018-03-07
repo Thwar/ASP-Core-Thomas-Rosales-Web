@@ -1,0 +1,165 @@
+html, body{
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	font-family: Verdana, Geneva, sans-serif;
+
+  }
+
+
+
+#main {
+	background-color: #FFF;
+	min-height: 100%;
+	width: 1000px;
+	margin: 0 auto;
+	margin-top: 1%;
+	text-align: center;
+
+}
+
+#topnav {
+	padding: 0 1px 1px;
+	margin: 0;
+
+	min-height: 100%;
+	color: #FFF; 
+}
+
+#topnav ul {
+
+list-style-type:none;
+margin:0;
+padding:0;
+overflow:hidden;
+}
+
+#topnav li {
+	margin: 0 auto;
+	display: inline-block;
+	
+	height:35px;
+	list-style: none;
+	border: solid 1px black;
+	text-align:center;
+	float:left;
+	background-color: #666;
+	font-size: 80%;
+	font-weight:lighter;
+	font-style:oblique;
+
+}
+
+
+#navigation #topnav #search{
+	min-width: 208px;
+	border-top-right-radius: 10px;
+	border-bottom-right-radius: 10px;
+
+}
+
+#navigation #topnav #round0{
+	border-top-left-radius: 10px;
+	border-bottom-left-radius: 10px;
+}
+#navigation #topnav #search #search0
+{
+	  position:relative;
+	  top: 10px;
+}
+
+#topnav a {
+
+		padding-bottom: 15px	 ;
+		padding-left:30px ;
+		padding-right: 30px ;
+		padding-top: 15px  ;
+	
+			
+	  text-decoration: none; 
+	  margin: 0; 
+	  color: #FFF;
+	  position:relative;
+	  top: 10px;
+
+}
+
+#topnav li:hover{
+	color: #FFF; background: #333;
+}
+
+
+
+#bigpic
+{
+	display: block;
+	margin: 0 auto; 
+	text-align:center;
+}
+
+#main #bigpic #left{
+	display: block;
+	text-align:left;
+}
+
+#smallpic{
+	display: block;
+	margin: 0 auto; 
+	text-align:center;
+	
+	}
+#smallpic img{
+	border: #DBDBDB 1px solid;
+	border-radius: 10px;
+	background-color: #FBFBFB ;
+	margin-left: 5px;
+	
+	
+	}
+	
+
+#footer
+{
+	font-size: 55%;
+	color: #666;
+	text-align: left;
+}
+
+#footer hr
+{
+	color: #F3F3F3;
+}
+
+#footer a
+{
+	text-decoration: none; 
+	color: #0078B3;
+
+}
+
+#main #footer #center
+{
+	text-align: center;
+}
+	
+#usa{
+	display: inline;
+	text-align: left;
+	display: inline-block;
+	width: 200px;
+	background-color: #FBFBFB;
+	border: thin solid #EEE;
+	
+}
+
+#usa a{
+	display: inline-block;
+	border-top-width: thin;
+	border-right-width: thin;
+	border-bottom-width: thin;
+	border-left-width: thin;
+	border-top-style: none;
+	border-right-style: none;
+	border-bottom-style: none;
+	border-left-style: none;
+}
