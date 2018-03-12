@@ -1,0 +1,55 @@
+@page
+@model ThomasRosales.Pages.Projects.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Project</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Project.Name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Project.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Project.ShortDescription)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Project.ShortDescription)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Project.ImageUrl)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Project.ImageUrl)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Project.Link)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Project.Link)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Project.Category)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Project.Category)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Project.Technologies)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Project.Technologies)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.Project.ID">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>

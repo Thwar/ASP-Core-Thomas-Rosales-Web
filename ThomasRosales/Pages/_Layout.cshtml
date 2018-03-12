@@ -14,10 +14,11 @@
     <title>Thomas Rosales's Web Portal</title>
 
     <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/pure-min.css">
-    <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/grids-responsive-min.css">
+    <link href="~/css/main.css" rel="stylesheet" />
 
-    <script src="js/jquery-2.1.1.min.js"></script>
-    <script src="js/jquery.shuffleLetters.js"></script>
+    <script src="~/js/jquery-2.1.1.min.js"></script>
+    <script src="~/js/jquery.shuffleLetters.js"></script>
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 
     <script>
@@ -42,9 +43,11 @@
             $("#menuTitle").fadeTo(1000, 1);
             $(".header").fadeTo(2000, 1);
             $(".content p").fadeTo(2200, 1);
+            $("#about ul").fadeTo(2200, 1);
+            
             $(".social-buttons li").css("transform", "scale(1,1)");
 
-
+            $("#projects").fadeTo(1000, 1);
 
         });
 
@@ -52,13 +55,13 @@
 
     <style>
 
-        #menuTitle, .header, .content p {
+        #menuTitle, .header, .content p, #projects, #about ul {
             opacity: 0;
         }
     </style>
 
     <link href="/img/favicon.ico" rel="icon" type="image/x-icon" />
-
+    <link href="~/css/imageHover.css" rel="stylesheet" />
 </head>
 
 <body>
@@ -76,7 +79,7 @@
 
             <div class="pure-menu pure-menu-open">
 
-                <a id="menuTitle" class="pure-menu-heading" href="#">HOME</a>
+                <a id="menuTitle" class="pure-menu-heading" href="#">@Model.CurrentPage</a>
 
                 <ul id="nav">
 
@@ -84,19 +87,22 @@
                         <a class="@(@Model.CurrentPage == "Home" ? "selected" : "")" href="/">Home</a>
                     </li>
 
-                    <li class="menu-item">
+                    @*<li class="menu-item">
                         <a href="blog">Blog</a>
-                    </li>
+                    </li>*@
 
                     <li class="menu-item">
 
-                        <a href="#">Portfolio</a>
+                        <a class="@(@Model.CurrentPage == "Projects" || @Model.CurrentPage == "Music"   ? "selected active" : "")" href="#">Portfolio</a>
 
-                        <ul>
-                            <li><a href="websites">Websites</a></li>
-                            <li><a href="applications">Applications</a></li>
-                            <li><a asp-page="/Music">Music</a></li>
+                        <ul style="display: @(@Model.CurrentPage == "Projects" || @Model.CurrentPage == "Music" ? "block" : "")">
+                            <li><a class="@(@Model.CurrentPage == "Projects" ? "selected" : "")" href="projects" >Projects</a></li>
+                            <li><a class="@(@Model.CurrentPage == "Music" ? "selected" : "")" href="music" >Music</a></li>
                         </ul>
+                    </li>
+                    
+                    <li class="menu-item">
+                        <a class="@(@Model.CurrentPage == "Resources" ? "selected" : "")" href="resources">Cool Stuff</a>
                     </li>
 
                     <li class="menu-item">
@@ -124,8 +130,9 @@
 
     <!-- Script must be here to load DOM properly  -->
 
-    <script src="js/ui.js"></script>
+    <script src="~/js/ui.js"></script>
 
+    @*@RenderSection("Scripts", required: false)*@
 </body>
 
 </html>

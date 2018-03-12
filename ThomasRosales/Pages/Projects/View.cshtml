@@ -1,0 +1,94 @@
+@page
+@model ThomasRosales.Pages.Projects.ViewModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<style>
+
+    .snip1577 img {
+        height: 190px;
+    }
+</style>
+
+
+<div class="content ">
+
+    <div class="header">
+        <h2 style="text-align :left;">Thomas Rosales - Projects</h2>
+    </div>
+
+
+
+    <div id="projects" class="">
+        <p>
+            <a asp-page="Create">Create New</a>
+        </p>
+
+        <table class="pure-table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Project[0].Name)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Project[0].ShortDescription)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Project[0].ImageUrl)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Project[0].Link)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Project[0].Category)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Project[0].Technologies)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Project)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ShortDescription)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ImageUrl)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Link)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Category)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Technologies)
+                        </td>
+                        <td>
+                            <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
+                            <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
+                            <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+
+
+
+    </div>
+
+
+
+
+
+</div>

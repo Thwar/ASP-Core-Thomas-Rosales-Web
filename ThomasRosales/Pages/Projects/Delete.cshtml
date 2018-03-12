@@ -1,0 +1,58 @@
+@page
+@model ThomasRosales.Pages.Projects.DeleteModel
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Project</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Project.Name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Project.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Project.ShortDescription)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Project.ShortDescription)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Project.ImageUrl)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Project.ImageUrl)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Project.Link)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Project.Link)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Project.Category)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Project.Category)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Project.Technologies)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Project.Technologies)
+        </dd>
+    </dl>
+    
+    <form method="post">
+        <input type="hidden" asp-for="Project.ID" />
+        <input type="submit" value="Delete" class="btn btn-default" /> |
+        <a asp-page="./Index">Back to List</a>
+    </form>
+</div>
