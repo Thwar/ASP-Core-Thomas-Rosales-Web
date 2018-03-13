@@ -5,6 +5,8 @@
     ViewData["Title"] = "Index";
 }
 
+
+
 <style>
 
     .snip1577 img {
@@ -25,6 +27,11 @@
         <p>
             <a asp-page="Create">Create New</a>
         </p>
+
+        <form method="post">
+            <input type="submit" value="Logout" />
+            @Html.AntiForgeryToken()
+        </form>
 
         <table class="pure-table">
             <thead>
@@ -51,7 +58,12 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach (var item in Model.Project)
+               
+           
+
+            @if(Model != null && Model.Project != null) //NUll check for Model
+            {
+                foreach (var item in Model.Project)
                 {
                     <tr>
                         <td>
@@ -79,6 +91,9 @@
                         </td>
                     </tr>
                 }
+            } 
+
+
             </tbody>
         </table>
 
