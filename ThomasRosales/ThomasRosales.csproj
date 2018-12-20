@@ -1,6 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
+    <UserSecretsId>2c564f3d-f21a-4743-8230-60f44b0b91d1</UserSecretsId>
   </PropertyGroup>
   <ItemGroup>
     <Content Remove="Pages\_ValidationScriptsPartial.cshtml" />
