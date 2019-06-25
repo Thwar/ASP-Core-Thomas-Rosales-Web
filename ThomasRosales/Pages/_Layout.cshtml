@@ -13,7 +13,7 @@
     <link rel="shortcut icon" href="favicon.ico" />
     <title>Thomas Rosales's Web Portal</title>
 
-    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/pure-min.css">
+    <link href="~/css/pure-min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/grids-responsive-min.css">
     <link href="~/css/main.css" rel="stylesheet" />
 
@@ -105,9 +105,9 @@
                         </ul>
                     </li>
 
-                    <li class="menu-item">
+                    @*<li class="menu-item">
                         <a class="@(@Model.CurrentPage == "Resources" ? "selected" : "")" href="resources">Cool Stuff</a>
-                    </li>
+                    </li>*@
 
                     <li class="menu-item">
                         <a class="@(@Model.CurrentPage == "About" ? "selected" : "")" href="about">About</a>
